@@ -12,11 +12,11 @@
 #include <PubSubClient.h>
  
 // Configurações - variáveis editáveis
-const char* default_SSID = "Wokwi-GUEST"; // Nome da rede Wi-Fi
-const char* default_PASSWORD = ""; // Senha da rede Wi-Fi
+const char* default_SSID = "Wokwi-GUEST"; // Nome da rede Wi-Fi (PARA TESTES)
+const char* default_PASSWORD = ""; // Senha da rede Wi-Fi (PARA TESTES)
 
-//const char* default_SSID = "FIAP-IBM"; // Nome da rede Wi-Fi
-//const char* default_PASSWORD = "Challenge@24!"; // Senha da rede Wi-Fi
+//const char* default_SSID = "FIAP-IBM"; // Nome da rede Wi-Fi (Rede a ser usada normalmente)
+//const char* default_PASSWORD = "Challenge@24!"; // Senha da rede Wi-Fi (Rede a ser usada normalmente)
 const char* default_BROKER_MQTT = "3.239.226.67"; // IP do Broker MQTT
 const int default_BROKER_PORT = 1883; // Porta do Broker MQTT
 const char* default_TOPICO_SUBSCRIBE = "/TEF/lampBVP/cmd"; // Tópico MQTT de escuta
@@ -41,11 +41,11 @@ int D4 = default_D4;
 WiFiClient espClient;
 PubSubClient MQTT(espClient);
 char EstadoSaida = '0';
- 
+
 void initSerial() {
     Serial.begin(115200);
 }
- 
+
 void initWiFi() {
     delay(10);
     Serial.println("------Conexao WI-FI------");
@@ -54,7 +54,7 @@ void initWiFi() {
     Serial.println("Aguarde");
     reconectWiFi();
 }
- 
+
 void initMQTT() {
     MQTT.setServer(BROKER_MQTT, BROKER_PORT);
     MQTT.setCallback(mqtt_callback);
